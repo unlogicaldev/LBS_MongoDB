@@ -1,0 +1,5 @@
+db.host=localhost
+db.port=57017
+mongo.db.name=app
+mongo.db.user=app
+mongo.db.pass=app

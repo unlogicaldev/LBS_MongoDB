@@ -1,0 +1,40 @@
+10
+
+dir
+3775
+svn://115.68.16.58/project/LBS-MongoDB/trunk/src/main/java/com/lbs/mongo/common
+svn://115.68.16.58/project
+
+
+
+2011-05-19T06:15:20.166297Z
+3775
+sc001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22bbc68b-1273-4ad0-a197-7ac95cf68017
+
+batch
+dir
+
+dao
+dir
+
+base
+dir
+
+util
+dir
+

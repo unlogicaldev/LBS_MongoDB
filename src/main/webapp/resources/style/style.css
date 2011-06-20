@@ -1,0 +1,237 @@
+/*  
+Theme Name: Filmscenic showcase template
+Theme URI: http://nettuts.com/
+Description: Filmscenic is a showcase-style blog theme that uses the Blueprint CSS grid.
+Version: 0.01
+Author: Raj Kumar Dash
+Author URI: http://www.rajdash.com/
+
+	Filmscenic/ Nettuts
+	 http://nettuts.com/
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+
+/* Begin Typography & Colors */
+
+body {  
+	background: #fff;
+	line-height: 125%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}  
+
+#container {  
+	width:950px;
+	padding: 0px;
+	padding-top:30px;
+}  
+
+
+
+a img { border:0 }  
+
+a {
+	color:#3366CC;
+	font-weight: bold;
+	text-decoration:none;
+}
+a:hover { color:#666; }  
+
+
+img.mainimg {  
+	outline: 1px solid #999;
+}
+
+
+p {
+	margin:0;
+	padding:0;
+	margin-top:5px;
+}
+
+
+/* <div class="sitetitle"><p>Blogging/SEO Niche Monitor</p></div> */
+div.sitetitle p {
+	line-height: 150%;
+	font-size: 1.3em;
+	font-weight: bold;
+	color:#999;
+	font-family: Verdana, 'Arial Black', Arial, Helvetica;
+	border-bottom: 1px solid #000;
+}
+
+div.fs-horiznav {
+	height: 25px;
+	width: 710px;
+	background: #ccc;
+	margin-bottom: 20px;
+}
+
+
+img.fs-bigimg {
+	outline: 1px solid #000;
+
+}
+
+
+/*
+<div class="span-5"><!-- Feature 1 column -->
+	<div class="fs-feature">
+		<img src="images/latest-snow-angels.jpg" border="0" />
+		<p class="fs-posttitle">Snow Angels</p>
+		<p class="fs-postdate">May 23, 2008</p>
+		<p class="fs-postauth">by film fan</p>
+		<p class="fs-descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+		dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+		ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+		nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+		anim id est laborum.</p>
+	</div>
+</div>
+*/
+
+div.fs-feature {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Verdana, Arial, Sans-serif;
+}
+div.fs-feature img {
+	outline: 1px solid #666;
+}
+div.fs-feature p.fs-posttitle {
+	font-size: 9pt;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #333;
+}
+div.fs-feature p.fs-postdate {
+	font-size: 9pt;
+	border-bottom: 1px solid #ccc;
+}
+div.fs-feature p.fs-postauth {
+	font-size: 9pt;
+	border-bottom: 1px solid #ccc;
+}
+
+div.fs-feature p.fs-descr {
+	font-size: 9pt;
+}
+
+
+/* Sidebar */
+
+/* Recent posts */
+
+img.fs-img-recentposts {
+	margin-bottom: 5px;
+}
+h3.fs-recposts-head {
+	font-size: 14px;
+	font-weight: bold;
+}
+div.fs-recposts {
+	width:190px;
+}
+
+
+/*
+<div class="fs-recpost">
+	<div class="fs-recthumb span-2">
+		<a href="#" rel="bookmark" title="88 Minutes"><img src="images/thumb-88-minutes.jpg" alt="88 Minutes" /></a>			
+	</div>
+	<div class="fs-rectext span-3 last">
+		<div class="fs-rectitle" id="post-218"><a href="#" rel="bookmark" title="Forgetting Sarah Marshall">Forgetting Sarah Marshall</a></div>
+		<div class="fs-recdate">May 19, 2008</div>
+		<div class="fs-recauth">by film fan</div>
+	</div>
+</div>
+*/
+
+div.fs-recpost {
+	width: 190px;
+	border-bottom: 1px dotted #333;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+div.fs-recthumb img {
+	outline: 1px solid #000;
+}
+div.fs-rectext {
+	margin-bottom: 5px;
+}
+div.fs-rectitle {
+	margin-top: 5px;
+	font-size: 9px;
+}
+div.fs-recdate {
+	font-size: 9px;
+}
+div.fs-recauth {
+	font-size: 9px;
+}
+
+
+/* Newsbox:
+
+<h3 class="fs-newsbox-head">Newsbits</h3>
+<div class="fs-newsbox">
+	<div id="home_asides"> <!-- start asides -->
+		<ul class="fs-newsbox-ul">
+			<li>Renee Zellweger told reporters at the London premiere of <a href="http://imdb.com/title/tt0389790/">Bee
+			Movie</a> that <a href="http://www.people.com/people/article/0,,20164854,00.html?xid=pop">stays sane by going
+			to the gym</a>. In addition to Bee Movie
+			&nbsp;&nbsp;<a href="http://filmzee.com/renee-zellweger-works-out-for-sanity/" rel="bookmark" title="Permanent Link to Renee Zellweger Works Out For Sanity">read...</a></li>
+
+		</ul>
+	</div> <!-- end asides -->
+	</div>
+*/
+
+h3.fs-newsbox-head {
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+div.fs-newsbox {
+	width: 184px; /* Should be 190, but factor in border thickness */
+	//background: #ccc;
+	background: #cccce6;
+	padding: 3px;
+	border: 0px;
+}
+
+ul.fs-newsbox-ul {
+	list-style:none;
+	margin:0px;  
+	padding:0px;      
+}
+ul.fs-newsbox-ul li {
+	border-left: 6px dotted #fff;
+	border-right: 6px dotted #fff;
+	border-bottom: 2px solid #fff;
+	padding-left: 7px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	font-size: 10px;
+}
+div.mapWarp { 
+	height:410px;
+	text-align:center;
+	background-color:#402817;
+}
+div.map { 
+	margin:5px 5px 5px 5px;
+	width:700px;
+	height:400px; 
+}
+div.fs-sitelogo {
+	background-color: #402817;
+}
+
+
+

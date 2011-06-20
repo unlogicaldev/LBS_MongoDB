@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/data/mongo
+        http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd" >
+
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+				<value>classpath:conf.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<task:annotation-driven executor="excutor" scheduler="scheduler"/>
+	<task:executor id="excutor" pool-size="100"/>
+	<task:scheduler id="scheduler" />
+
+	<!-- Scans the classpath of this application for @Components to deploy as beans -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.lbs.mongo" />
+
+	<!-- Application Message Bundle -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/WEB-INF/messages/messages" />
+		<property name="cacheSeconds" value="0" />
+	</bean>
+	
+	<context:component-scan base-package="com.lbs.mongo">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+<!-- 	 <mongo:mongo host="localhost" port="57017"/>  -->
+	 
+<!-- 	 <bean id="mongo" class="com.mongodb.Mongo"> -->
+<!--        <constructor-arg name="host" value="${db.host}"/> -->
+<!--        <constructor-arg name="port" value="${db.port}"/> -->
+<!--      </bean>    -->
+     <mongo:mongo host="localhost" port="57017">
+	    <mongo:options connectionsPerHost="50"
+	                   threadsAllowedToBlockForConnectionMultiplier="5"
+	                   connectTimeout="1000"
+	                   maxWaitTime="1500"
+	                   autoConnectRetry="true"
+	                   socketTimeout="1500"/>
+	  </mongo:mongo>
+     <bean id="jkMapper" class="org.codehaus.jackson.map.ObjectMapper" />
+     	 
+     <bean id="morphia" class="com.google.code.morphia.Morphia"/>
+
+	 <bean id="mds" class="com.lbs.mongo.common.dao.DatastoreMongo">
+	       <constructor-arg name="mongo" ref="mongo"/>
+	       <constructor-arg name="morphia" ref="morphia"/>
+	       <constructor-arg name="dbName" value="${mongo.db.name}"/>
+	       <constructor-arg name="username" value="${mongo.db.user}"/>
+	       <constructor-arg name="password" value="${mongo.db.pass}"/>
+	 </bean>
+	
+	<!-- Configures Spring MVC -->
+	<import resource="classpath:mvc-config.xml" />
+	
+	<!-- Sets up a Mongo DB instance. Configure host, port and credentials if needed. -->
+
+	<bean id="mongoTemplate" class="org.springframework.data.document.mongodb.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="${mongo.db.name}" />
+		<constructor-arg name="defaultCollectionName" value="position" />
+	</bean>
+	
+	<!-- 
+		Activates repository support by scanning the configured package for interfaces
+		extening MongoRepository. Will try to derive queries from the methods declared
+		in AlbumRepository e.g. The repository support will use the bean called
+		'mongoTemplate'	by default. Use 'mongo-template-ref' attribute to customize.
+	-->
+	<mongo:repositories base-package="com.lbs.mongo.*.*.impl" mongo-template-ref="mongoTemplate" />
+
+    
+</beans>
